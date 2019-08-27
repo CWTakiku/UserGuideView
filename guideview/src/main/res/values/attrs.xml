@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="UserGuideView">
+
+        <attr name="HighlightViewStyle" format="enum">
+            <enum name="rect" value="0" />
+            <enum name="circle" value="1" />
+            <enum name="oval" value="2" />
+            <enum name="original" value="3"/>
+        </attr>
+        <attr name="MaskBlurStyle" format="enum">
+            <enum name="solid" value="0" />
+            <enum name="normal" value="1" />
+        </attr>
+        <attr name="maskColor" format="reference|color" />
+        <attr name="offsetMargin" format="dimension"/>
+    </declare-styleable>
+</resources>

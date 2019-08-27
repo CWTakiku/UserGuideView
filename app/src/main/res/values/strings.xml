@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">UserGuideView</string>
+    <string name="skip">跳过</string>
+    <string name="need_introduction">开始引导？</string>
+    <string name="start1">开始</string>
+    <string name="next">下一个</string>
+    <string name="done">完成</string>
+</resources>
