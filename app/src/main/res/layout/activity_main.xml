@@ -4,118 +4,132 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/white"
     tools:context=".MainActivity">
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="left"
-    android:id="@+id/tv_left"
-    android:background="@color/colorAccent"
-    android:layout_centerVertical="true"/>
+
     <TextView
+        android:id="@+id/tv_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="right"
-        android:textColor="@color/white"
-        android:id="@+id/tv_right"
-        android:background="@color/colorAccent"
         android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"/>
+        android:layout_marginLeft="20dp"
+        android:text="leftView"
+        android:textColor="#333333" />
+
+    <ImageView
+        android:id="@+id/iv_right"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/ic_launcher_background"
+        android:textColor="#333333" />
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/tv_always"
-        android:textColor="@color/white"
-        android:text="引导层 总是显示的view"/>
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="top"
+        android:layout_marginTop="20dp"
+        android:layout_centerInParent="true"
+        android:text="总是显示的view"
+        android:textColor="#333333" />
+
+    <TextView
         android:id="@+id/tv_top"
-        android:background="@color/colorAccent"
-        android:textColor="@color/white"
-        android:layout_centerHorizontal="true"/>
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="bottom"
-        android:textColor="@color/white"
-        android:id="@+id/tv_bottom"
-        android:background="@color/colorAccent"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="topView"
+        android:textColor="#333333" />
+
+    <TextView
+        android:id="@+id/tv_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:text="bottomView"
+        android:textColor="#333333" />
+
     <RelativeLayout
+        android:id="@+id/rl_userGuide"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
-        android:id="@+id/rl_userGuide">
+        android:visibility="gone">
+
         <com.cwlguideview.UserGuideView
+            android:id="@+id/ug_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/ug_view"
             android:visibility="gone"
-            app:maskColor="@color/color_203249"
-            app:HighlightViewStyle="original"
-            />
+            app:HighlightViewStyle="circle"
+            app:offsetMargin="10dp"
+            app:maskColor="@color/color_203249" />
+
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/rl_guide_hint"
-            android:gravity="center"
-            android:layout_centerInParent="true">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/need_introduction"
-                android:layout_centerHorizontal="true"
-                android:textColor="@color/white"
-                android:textSize="22sp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rect_radius_3dp_min_blue_bg"
-                android:id="@+id/btn_skip"
-                android:text="@string/skip"
-                android:textColor="@color/white"
-                android:paddingLeft="60dp"
-                android:paddingRight="60dp"
-                android:paddingTop="13dp"
-                android:paddingBottom="13dp"
-                android:layout_marginTop="43dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:background="@drawable/rect_radius_3dp_min_blue_bg"
-                android:layout_marginLeft="12dp"
-                android:layout_toRightOf="@+id/btn_skip"
-                android:id="@+id/btn_start"
-                android:text="@string/start1"
-                android:paddingLeft="60dp"
-                android:paddingRight="60dp"
-                android:paddingTop="13dp"
-                android:paddingBottom="13dp"
-                android:layout_marginTop="43dp"/>
-        </RelativeLayout>
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginBottom="23dp"
-            android:layout_marginRight="18dp"
+            android:layout_centerInParent="true"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="@string/need_introduction"
+                android:textColor="@color/white"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/btn_skip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="43dp"
+                android:background="@drawable/rect_radius_3dp_min_blue_bg"
+                android:paddingLeft="60dp"
+                android:paddingTop="13dp"
+                android:paddingRight="60dp"
+                android:paddingBottom="13dp"
+                android:text="@string/skip"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/btn_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="43dp"
+                android:layout_toRightOf="@+id/btn_skip"
+                android:background="@drawable/rect_radius_3dp_min_blue_bg"
+                android:paddingLeft="60dp"
+                android:paddingTop="13dp"
+                android:paddingRight="60dp"
+                android:paddingBottom="13dp"
+                android:text="@string/start1"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+
+        <TextView
             android:id="@+id/btn_next"
-            android:visibility="gone"
-            android:paddingLeft="47dp"
-            android:paddingRight="47dp"
-            android:paddingTop="13dp"
-            android:paddingBottom="13dp"
-            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="18dp"
+            android:layout_marginBottom="23dp"
             android:background="@drawable/rect_radius_3dp_blue_bg"
+            android:paddingLeft="47dp"
+            android:paddingTop="13dp"
+            android:paddingRight="47dp"
+            android:paddingBottom="13dp"
+            android:text="@string/next"
             android:textColor="@color/white"
-            android:text="@string/next"/>
+            android:textSize="16sp"
+            android:visibility="gone" />
     </RelativeLayout>
 
 </RelativeLayout>

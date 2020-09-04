@@ -18,16 +18,14 @@ Add it in your root build.gradle at the end of repositories:
 Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.mrchengwenlong:UserGuideView:v1.0.0'
+	        implementation 'com.github.mrchengwenlong:UserGuideView:v1.0.1'
 	}
   
   Use:
+    
+    userGuideView.setConfig() // set config 
   
 	userGuideView.putGuideView() // it can get guide layer ,It has multiple overloaded methods 
-  
-	userGuideView.setTipViewMoveY(View v,int offset)  //Remind the graph of the offset on Y ，offset>0 down offset offset<0 up offset
-  
-	userGuideView.setTipDirection(View v,Direction d) //you can set direction of view for to put a reminder view
   
 	userGuideView.setUserGuideListener //get last guide layer listener or dissmiss
 	

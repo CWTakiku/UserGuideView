@@ -5,13 +5,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.cwlguideview.HighLightView;
 import com.cwlguideview.MeasureHelpUtil;
 import com.cwlguideview.UserGuideView;
+import com.cwlguideview.config.Config;
+import com.cwlguideview.config.Direction;
+import com.cwlguideview.config.HighLightStyle;
+import com.cwlguideview.config.MaskBlurStyle;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private RelativeLayout rlUserGuide;
@@ -23,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvTop;
     private TextView tvLeft;
     private TextView tvBottom;
-    private TextView tvRight;
+    private ImageView ivRight;
     private TextView tv_always;
     boolean isLast=false;
     @Override
@@ -42,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         rlGuideHint=findViewById(R.id.rl_guide_hint);
         tvLeft=findViewById(R.id.tv_left);
         tvBottom=findViewById(R.id.tv_bottom);
-        tvRight=findViewById(R.id.tv_right);
+        ivRight=findViewById(R.id.iv_right);
         tvTop=findViewById(R.id.tv_top);
         tv_always=findViewById(R.id.tv_always);
     }
@@ -80,19 +88,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 rlGuideHint.setVisibility(View.GONE);
-                userGuideView.putGuideView(tvLeft,"this is a left view",20,0, UserGuideView.Direction.LEFT);
-                userGuideView.putGuideView(tvTop,R.drawable.bettery_camera_50to60,0,30, UserGuideView.Direction.TOP);
-                LinkedHashMap<View,String> hashMap=new LinkedHashMap<>(2);
-                hashMap.put(tvBottom,"thi is a bottom view");
-                hashMap.put(tvRight,"thi is a right view");
-                LinkedHashMap<View, UserGuideView.Direction> directionLinkedHashMap=new LinkedHashMap<>(2);
-                directionLinkedHashMap.put(tvBottom, UserGuideView.Direction.BOTTOM);
-                directionLinkedHashMap.put(tvRight, UserGuideView.Direction.RIGHT);
-                userGuideView.putGuideView(hashMap,directionLinkedHashMap);
-                userGuideView.setTipViewMoveY(tvBottom,-100);
-                userGuideView.setTipViewMoveX(tvRight,-50);
-                userGuideView.putAlwaysShowView(tv_always,new Rect(0,0,tv_always.getWidth(),tv_always.getHeight()));
-                userGuideView.startGuide();
+
+                HighLightView leftView = new HighLightView(tvLeft,"this is a left view",20,0, Direction.LEFT);
+                HighLightView topView = new HighLightView(tvTop,R.drawable.bettery_camera_50to60,0,30, Direction.TOP);
+                View view = LayoutInflater.from(MainActivity.this).inflate(R.layout.right_hint_layout,null,false);
+                HighLightView rightView = new HighLightView(ivRight,view,new Rect(0,0, MeasureHelpUtil.dip2px(MainActivity.this,150), MeasureHelpUtil.dip2px(MainActivity.this,40)),-50,0,Direction.RIGHT);
+                HighLightView bottomView = new HighLightView(tvBottom,"this is a bottom view",-100,0,Direction.BOTTOM);
+                List<HighLightView> togetherShowViews = new ArrayList<>();
+                togetherShowViews.add(rightView);
+                togetherShowViews.add(bottomView);
+
+
+                userGuideView.setConfig(new Config().setHighLightStyle(HighLightStyle.HighLightSTYLE_ORIGINAL).setMaskBlurStyle(MaskBlurStyle.MASK_BLUR_STYLE_NORMAL))
+                        .putGuideView(leftView)
+                        .putGuideView(topView)
+                        .putGuideTogetherViews(togetherShowViews)
+                        //.putAlwaysShowView(tv_always)
+                        .startGuide();
 
                 tvNext.setVisibility(View.VISIBLE);
             }

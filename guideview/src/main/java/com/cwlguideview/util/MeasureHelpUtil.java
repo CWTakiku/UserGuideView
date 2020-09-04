@@ -179,11 +179,6 @@ public final class MeasureHelpUtil {
         }
         Bitmap bitmap = Bitmap.createBitmap(cacheBitmap);
         view.destroyDrawingCache();
-
-//        Bitmap dest = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-//        Canvas c = new Canvas(dest);
-//        view.draw(c);
-
         return bitmap;
     }
 
